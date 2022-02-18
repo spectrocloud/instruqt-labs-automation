@@ -273,9 +273,9 @@ manifests:
         crashCollector:
           disable: true
         storage:
-          useAllNodes: true
-          useAllDevices: true
-          #deviceFilter:
+          useAllNodes: false
+          useAllDevices: false
+          deviceFilter: sd*
         healthCheck:
           daemonHealth:
             mon:
