@@ -274,7 +274,7 @@ manifests:
           disable: true
         storage:
           useAllNodes: true
-          useAllDevices: true
+          useAllDevices: false
           deviceFilter: sdb
         healthCheck:
           daemonHealth:
