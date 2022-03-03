@@ -7,7 +7,7 @@ will provision the following resources on Spectro Cloud:
 
 ## Instructions:
 
-Clone this repository to a local directory, and then change directory to `profile`. Proceed with the following:
+Clone this repository to a local directory, and then change directory to `cluster_profile`. Proceed with the following:
 1. Follow the Spectro Cloud documentation to create Palette trial
 [Spectro Cloud Palette Trial ](https://www.spectrocloud.com/free-trial/).
 2. From the current directory, copy the template variable file `terraform.tfvars.example` to a new file `terraform.tfvars`.
