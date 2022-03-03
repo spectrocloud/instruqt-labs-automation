@@ -1,0 +1,25 @@
+# This Terraform example for Spectro Cloud Palette can be used by customizing this file
+# as well as setting some environment variables for your secrets data 
+# NEVER COMMIT files with secrets into a version control system
+
+
+# Spectro Cloud credentials used to communicate with the Palette platform
+
+# The Spectro Cloud provider works for the SaaS offering as well as private install
+# If using a private install provide the dns name of your on-prem Palette enviroment 
+sc_host         = "api.spectrocloud.com" 
+#sc_username     = "set with: export TF_VAR_sc_username=yourUserName"
+#sc_password     = "set with: export TF_VAR_sc_password=yourPassword"
+
+# Spectro Cloud can manage Kubernetes clusters in separate projects that help support multitenancy  and RBAC
+# There is a default project named "Default" this can be used for testing and training 
+sc_project_name = "Default" 
+
+# Spectro Cloud Palette profile 
+# names must be lowercase letters, numbers, and dashes only
+
+cluster_profile_name = "GCPdev"
+cluster_profile_description = "This profile is being used with an Instruqt lab"
+cluster_profile_tags = ["example:tag1", "example:tag2"]
+cloud = "gcp"
+type = "cluster" 
