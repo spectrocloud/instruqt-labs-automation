@@ -18,7 +18,7 @@ sc_project_name = "Default"
 # Spectro Cloud Palette profile 
 # names must be lowercase letters, numbers, and dashes only
 
-cluster_profile_name = "GCPdev-profile"
+cluster_profile_name = "gcp-dev-profile"
 cluster_profile_description = "This profile is being used with an Instruqt lab"
 cluster_profile_tags = ["example:tag1", "example:tag2"]
 cloud = "gcp"
