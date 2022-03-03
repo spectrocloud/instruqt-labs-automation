@@ -1,11 +1,11 @@
 data "spectrocloud_pack" "csi" {
   name = "csi-gcp"
-  version  = "1.0.x"
+  version  = "1.0"
 }
 
 data "spectrocloud_pack" "cni" {
   name    = "cni-calico"
-  version = "3.19.x"
+  version = "3.19.0"
 }
 
 data "spectrocloud_pack" "k8s" {
