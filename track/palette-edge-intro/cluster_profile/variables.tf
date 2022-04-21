@@ -12,6 +12,11 @@ variable "sc_password" {
   sensitive   = true
 }
 
+variable "sc_api_key" {
+  description = "Palette API key"
+  sensitive   = true
+}
+
 variable "sc_project_name" {
   description = "Spectro Cloud Project (e.g: Default)"
   default     = "Default"
