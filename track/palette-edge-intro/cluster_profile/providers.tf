@@ -9,8 +9,8 @@ terraform {
 
 provider "spectrocloud" {
   host         = var.sc_host
-  username     = var.sc_username
-  password     = var.sc_password
+  #username     = var.sc_username
+  #password     = var.sc_password
   api_key      = var.sc_api_key
   project_name = var.sc_project_name
 }
