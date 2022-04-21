@@ -10,7 +10,7 @@
 sc_host         = "api.spectrocloud.com" 
 #sc_username     = "set with: export TF_VAR_sc_username=yourUserName"
 #sc_password     = "set with: export TF_VAR_sc_password=yourPassword"
-
+#sc_api_key      = "set with: export TF_VAR_sc_api_key"
 # Spectro Cloud can manage Kubernetes clusters in separate projects that help support multitenancy  and RBAC
 # There is a default project named "Default" this can be used for testing and training 
 sc_project_name = "Default" 
