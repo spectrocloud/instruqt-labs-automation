@@ -1,0 +1,67 @@
+# This Terraform example for Spectro Cloud Palette can be used by customizing this file
+# as well as setting some environment variables for your secrets data 
+# NEVER COMMIT files with secrets into a version control system
+
+
+# Spectro Cloud credentials used to communicate with the Palette platform
+
+# The Spectro Cloud provider works for the SaaS offering as well as private install
+# If using a private install provide the dns name of your on-prem Palette enviroment 
+sc_host         = "api.spectrocloud.com" 
+#sc_api_key      = "use export TF_VAR_sc_api_key"
+
+# Spectro Cloud can manage Kubernetes clusters in separate projects that help support multitenancy and RBAC
+# There is a default project named "Default" this can be used for testing and training 
+sc_project_name    = "Default" 
+sc_cluster_name    = "tf-aws-iaas-1"
+sc_cluster_tags    = ["iac:terraform", "owner:yourName"]
+sc_cp_profile_name = "aws-cp-terraform"
+
+
+# AWS Cloud Account credentials
+# Ensure minimum AWS account permissions:
+# https://docs.spectrocloud.com/clusters/?clusterType=aws_cluster#awscloudaccountpermissions
+# If following along with an Istruqt lab the keys are created by Instruqt with proper permissions
+sc_cloud_account_name = "tf-aws-temp-creds"
+#aws_access_key_id = "use export TF_VAR_aws_access_key_id"
+#aws_secret_access_key = "use export TF_VAR_aws_secret_access_key"
+
+# Spectro Cloud Palette profile 
+# names must be lowercase letters, numbers, and dashes only
+
+sc_cp_profile_description = "brief-description-of-profile"
+sc_cp_profile_tags = ["owner:yourName", "example:tag2"]
+sc_cp_cloud = "aws"
+sc_cp_type = "cluster"
+
+
+# Existing SSH Key in AWS
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
+#aws_ssh_key_name = "key-name"
+
+# To create a new ssh key run ssh-keygen -f /tmp/spectrokey , then copy the contents of spectrokey.pub  
+# for more info on creating ssh keys see: https://www.ssh.com/academy/ssh/keygen
+aws_ssh_key_name = "spectrokey"
+aws_key_pair = "yourPublicKeyBob"
+
+# Enter the AWS Region and AZ for cluster resources
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions
+aws_region    = "us-east-1"
+
+# The master and worker instance types can be set independently  
+master_instance_type = "t3a.large"
+worker_instance_type = "t3a.large"
+
+# The master and worker node counts can be set independently 
+master-pool_node_count = 1
+worker-pool_node_count = 2
+
+# The master and worker node region az's can be set independently.  Palette will round-robin if multiple az's are declared 
+master_aws_region_az = [
+    "us-east-1a",
+    "us-east-1b",
+    ]
+worker_aws_region_az = [
+    "us-east-1a",
+    "us-east-1b",
+    ]
