@@ -30,7 +30,7 @@ sc_cloud_account_name = "tf-aws-temp-creds"
 # names must be lowercase letters, numbers, and dashes only
 
 sc_cp_profile_description = "brief-description-of-profile"
-sc_cp_profile_tags = ["owner:yourName", "example:tag2"]
+sc_cp_profile_tags = ["iac:terraform", "example:tag2"]
 sc_cp_cloud = "aws"
 sc_cp_type = "cluster"
 
