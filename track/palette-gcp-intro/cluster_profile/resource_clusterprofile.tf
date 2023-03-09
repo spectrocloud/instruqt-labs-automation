@@ -1,21 +1,21 @@
 data "spectrocloud_pack" "csi" {
-  name = "csi-gcp"
-  version  = "1.0"
+  name = "csi-gcp-driver"
+  version  = "1.8.2"
 }
 
 data "spectrocloud_pack" "cni" {
   name    = "cni-calico"
-  version = "3.19.0"
+  version = "3.24.5"
 }
 
 data "spectrocloud_pack" "k8s" {
   name    = "kubernetes"
-  version = "1.21.6"
+  version = "1.24.10"
 }
 
 data "spectrocloud_pack" "ubuntu" {
   name = "ubuntu-gcp"
-  version  = "18.04"
+  version  = "20.04"
 }
 
 resource "spectrocloud_cluster_profile" "profile" {

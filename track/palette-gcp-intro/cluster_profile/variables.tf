@@ -3,13 +3,8 @@ variable "sc_host" {
   default     = "api.spectrocloud.com"
 }
 
-variable "sc_username" {
-  description = "Spectro Cloud Username"
-}
-
-variable "sc_password" {
-  description = "Spectro Cloud Password"
-  sensitive   = true
+variable "sc_api_key" {
+  description = "Spectro Cloud API key"
 }
 
 variable "sc_project_name" {

@@ -8,8 +8,8 @@
 # The Spectro Cloud provider works for the SaaS offering as well as private install
 # If using a private install provide the dns name of your on-prem Palette enviroment 
 sc_host         = "api.spectrocloud.com" 
-#sc_username     = "set with: export TF_VAR_sc_username=yourUserName"
-#sc_password     = "set with: export TF_VAR_sc_password=yourPassword"
+#sc_api_key      = "yourAPIkey"
+
 
 # Spectro Cloud can manage Kubernetes clusters in separate projects that help support multitenancy  and RBAC
 # There is a default project named "Default" this can be used for testing and training 
@@ -20,6 +20,6 @@ sc_project_name = "Default"
 
 cluster_profile_name = "gcp-dev-profile"
 cluster_profile_description = "This profile is being used with an Instruqt lab"
-cluster_profile_tags = ["example:tag1", "example:tag2"]
+cluster_profile_tags = ["example:tag1", "owner:dev_dept"]]
 cloud = "gcp"
 type = "cluster" 
