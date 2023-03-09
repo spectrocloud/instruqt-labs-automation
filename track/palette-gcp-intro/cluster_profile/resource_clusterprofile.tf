@@ -1,3 +1,8 @@
+data "spectrocloud_pack" "spectro_proxy" {
+  name = "spectro-proxy"
+  version  = "1.2.0"
+}
+
 data "spectrocloud_pack" "csi" {
   name = "csi-gcp-driver"
   version  = "1.8.2"
@@ -36,7 +41,7 @@ pack {
     name   = data.spectrocloud_pack.k8s.name
     tag    = data.spectrocloud_pack.k8s.version
     uid    = data.spectrocloud_pack.k8s.id
-    values = data.spectrocloud_pack.k8s.values
+    values = file("${path.cwd}/values_yaml/spectro_proxy.yaml")
   }  
 pack {
     name   = data.spectrocloud_pack.cni.name
@@ -44,10 +49,17 @@ pack {
     uid    = data.spectrocloud_pack.cni.id
     values = data.spectrocloud_pack.cni.values
   }
-  pack {
+pack {
     name   = data.spectrocloud_pack.csi.name
     tag    = data.spectrocloud_pack.csi.version
     uid    = data.spectrocloud_pack.csi.id
     values = data.spectrocloud_pack.csi.values
   }
+pack {
+    name   = data.spectrocloud_pack.spectro_proxy.name
+    tag    = data.spectrocloud_pack.spectro_proxy.version
+    uid    = data.spectrocloud_pack.spectro_proxy.id
+    values = data.spectrocloud_pack.spectro_proxy.values
+  }
+
 }
