@@ -20,6 +20,6 @@ sc_project_name = "Default"
 
 cluster_profile_name = "gcp-dev-profile"
 cluster_profile_description = "This profile is being used with an Instruqt lab"
-cluster_profile_tags = ["example:tag1", "owner:dev_dept"]]
+cluster_profile_tags = ["example:tag1", "owner:dev_dept"]
 cloud = "gcp"
 type = "cluster" 
