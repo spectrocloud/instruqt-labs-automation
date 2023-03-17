@@ -67,9 +67,9 @@ data "spectrocloud_pack" "k8sdash" {
 #}
 
 data "spectrocloud_pack" "csi" {
-  name = "csi-aws-ebs"
+  name = "csi-aws"
   registry_uid = data.spectrocloud_registry.registry.id
-  version  = "1.10.0"
+  version  = "1.0.0"
 }
 
 #data "spectrocloud_pack" "cni" {
