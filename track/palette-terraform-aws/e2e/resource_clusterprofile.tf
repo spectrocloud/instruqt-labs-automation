@@ -93,7 +93,7 @@ data "spectrocloud_pack" "cni" {
 data "spectrocloud_pack" "k8s" {
   name    = "kubernetes"
   registry_uid = data.spectrocloud_registry.registry.id
-  version = "1.25.4"
+  version = "1.21.14"
 }
 
 #data "spectrocloud_pack" "ubuntu" {
@@ -105,7 +105,7 @@ data "spectrocloud_pack" "k8s" {
 data "spectrocloud_pack" "ubuntu" {
   name = "ubuntu-aws"
   registry_uid = data.spectrocloud_registry.registry.id
-  version  = "22.04"
+  version  = "20.04"
 }
 
 
