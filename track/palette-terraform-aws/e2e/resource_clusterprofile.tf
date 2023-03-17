@@ -47,7 +47,7 @@ data "spectrocloud_registry" "registry" {
   #version  = "2.4.0"
 #}
 
-data "spectrocloud_pack" "k8s-dash" {
+data "spectrocloud_pack" "k8sdash" {
   name = "spectro-k8s-dashboard"
   registry_uid = data.spectrocloud_registry.registry.id
   version  = "2.7.0"
@@ -153,7 +153,7 @@ pack {
   #}
   
 pack {
-    name   = "k8s-dash"
+    name   = "k8sdash"
     tag    = data.spectrocloud_pack.k8sdash.version
     uid    = data.spectrocloud_pack.k8sdash.id
     values = data.spectrocloud_pack.k8sdash.values
