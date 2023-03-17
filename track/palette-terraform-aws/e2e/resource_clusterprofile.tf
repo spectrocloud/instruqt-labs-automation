@@ -35,48 +35,79 @@ data "spectrocloud_registry" "registry" {
   name = "Public Repo"
 }
 
-data "spectrocloud_pack" "argo" {
-  name = "argo-cd"
+#data "spectrocloud_pack" "argo" {
+  #name = "argo-cd"
+  #registry_uid = data.spectrocloud_registry.registry.id
+  #version  = "3.26.7"
+#}
+
+#data "spectrocloud_pack" "k8sdash" {
+  #name = "k8s-dashboard"
+  #registry_uid = data.spectrocloud_registry.registry.id
+  #version  = "2.4.0"
+#}
+
+data "spectrocloud_pack" "k8s-dashboard" {
+  name = "spectro-k8s-dashboard"
   registry_uid = data.spectrocloud_registry.registry.id
-  version  = "3.26.7"
+  version  = "2.7.0"
 }
 
-data "spectrocloud_pack" "k8sdash" {
-  name = "k8s-dashboard"
-  registry_uid = data.spectrocloud_registry.registry.id
-  version  = "2.4.0"
-}
+#data "spectrocloud_pack" "opa" {
+  #name = "open-policy-agent"
+  #registry_uid = data.spectrocloud_registry.registry.id
+  #version  = "3.7.0"
+#}
 
-data "spectrocloud_pack" "opa" {
-  name = "open-policy-agent"
-  registry_uid = data.spectrocloud_registry.registry.id
-  version  = "3.7.0"
-}
 
+#data "spectrocloud_pack" "csi" {
+  #name = "csi-aws"
+  #registry_uid = data.spectrocloud_registry.registry.id
+  #version  = "1.0.0"
+#}
 
 data "spectrocloud_pack" "csi" {
-  name = "csi-aws"
+  name = "csi-aws-ebs"
   registry_uid = data.spectrocloud_registry.registry.id
-  version  = "1.0.0"
+  version  = "1.10.0"
 }
+
+#data "spectrocloud_pack" "cni" {
+  #name    = "cni-calico"
+  #registry_uid = data.spectrocloud_registry.registry.id
+  #version = "3.22.0"
+#}
 
 data "spectrocloud_pack" "cni" {
   name    = "cni-calico"
   registry_uid = data.spectrocloud_registry.registry.id
-  version = "3.22.0"
+  version = "3.24.1"
 }
+
+#data "spectrocloud_pack" "k8s" {
+  #name    = "kubernetes"
+  #registry_uid = data.spectrocloud_registry.registry.id
+  #version = "1.21.10"
+#}
 
 data "spectrocloud_pack" "k8s" {
   name    = "kubernetes"
   registry_uid = data.spectrocloud_registry.registry.id
-  version = "1.21.10"
+  version = "1.25.4"
 }
+
+#data "spectrocloud_pack" "ubuntu" {
+  #name = "ubuntu-aws"
+  #registry_uid = data.spectrocloud_registry.registry.id
+  #version  = "20.04"
+#}
 
 data "spectrocloud_pack" "ubuntu" {
   name = "ubuntu-aws"
   registry_uid = data.spectrocloud_registry.registry.id
-  version  = "20.04"
+  version  = "22.04"
 }
+
 
 
 resource "spectrocloud_cluster_profile" "profile" {
@@ -114,12 +145,12 @@ pack {
     values = data.spectrocloud_pack.csi.values
   }
 
-pack {
-    name   = "open-policy-agent"
-    tag    = data.spectrocloud_pack.opa.version
-    uid    = data.spectrocloud_pack.opa.id
-    values = data.spectrocloud_pack.opa.values
-  }
+#pack {
+    #name   = "open-policy-agent"
+    #tag    = data.spectrocloud_pack.opa.version
+    #uid    = data.spectrocloud_pack.opa.id
+    #values = data.spectrocloud_pack.opa.values
+  #}
   
 pack {
     name   = "k8s-dashboard"
@@ -128,11 +159,11 @@ pack {
     values = data.spectrocloud_pack.k8sdash.values
   }  
 
-pack {
-    name   = "argo-cd"
-    tag    = data.spectrocloud_pack.argo.version
-    uid    = data.spectrocloud_pack.argo.id
-    values = data.spectrocloud_pack.argo.values
-  }  
+#pack {
+    #name   = "argo-cd"
+    #tag    = data.spectrocloud_pack.argo.version
+    #uid    = data.spectrocloud_pack.argo.id
+    #values = data.spectrocloud_pack.argo.values
+  #}  
 
 }
