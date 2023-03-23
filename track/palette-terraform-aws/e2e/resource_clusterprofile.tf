@@ -47,11 +47,11 @@ data "spectrocloud_registry" "registry" {
   #version  = "2.4.0"
 #}
 
-#data "spectrocloud_pack" "k8sdash" {
-  #name = "spectro-k8s-dashboard"
-  #registry_uid = data.spectrocloud_registry.registry.id
-  #version  = "2.7.0"
-#}
+data "spectro-k8s-dashboard" "k8sdash" {
+  name = "spectro-k8s-dashboard"
+  registry_uid = data.spectrocloud_registry.registry.id
+  version  = "2.7.0"
+}
 
 #data "spectrocloud_pack" "opa" {
   #name = "open-policy-agent"
@@ -93,7 +93,7 @@ data "spectrocloud_pack" "cni" {
 data "spectrocloud_pack" "k8s" {
   name    = "kubernetes"
   registry_uid = data.spectrocloud_registry.registry.id
-  version = "1.21.14"
+  version = "1.25.4"
 }
 
 #data "spectrocloud_pack" "ubuntu" {
@@ -105,7 +105,7 @@ data "spectrocloud_pack" "k8s" {
 data "spectrocloud_pack" "ubuntu" {
   name = "ubuntu-aws"
   registry_uid = data.spectrocloud_registry.registry.id
-  version  = "20.04"
+  version  = "22.04"
 }
 
 
@@ -152,12 +152,12 @@ pack {
     #values = data.spectrocloud_pack.opa.values
   #}
   
-#pack {
-    #name   = "k8sdash"
-    #tag    = data.spectrocloud_pack.k8sdash.version
-    #uid    = data.spectrocloud_pack.k8sdash.id
-    #values = data.spectrocloud_pack.k8sdash.values
-  #}  
+pack {
+    name   = "k8sdash"
+    tag    = data.spectrocloud_pack.k8sdash.version
+    uid    = data.spectrocloud_pack.k8sdash.id
+    values = data.spectrocloud_pack.k8sdash.values
+  }  
 
 #pack {
     #name   = "argo-cd"
