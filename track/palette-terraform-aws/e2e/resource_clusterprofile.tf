@@ -47,7 +47,7 @@ data "spectrocloud_registry" "registry" {
   #version  = "2.4.0"
 #}
 
-data "spectro-k8s-dashboard" "k8sdash" {
+data "spectrocloud_pack" "k8sdash" {
   name = "spectro-k8s-dashboard"
   registry_uid = data.spectrocloud_registry.registry.id
   version  = "2.7.0"
