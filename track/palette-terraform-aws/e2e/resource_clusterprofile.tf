@@ -67,9 +67,9 @@ data "spectrocloud_pack" "k8sdash" {
 #}
 
 data "spectrocloud_pack" "csi" {
-  name = "csi-aws-ebs"
+  name = "csi-aws-efs"
   registry_uid = data.spectrocloud_registry.registry.id
-  version  = "1.16.0"
+  version  = "1.4.9"
 }
 
 #data "spectrocloud_pack" "cni" {
@@ -118,42 +118,42 @@ resource "spectrocloud_cluster_profile" "profile" {
   type        = var.sc_cp_type
 
 pack {
-    name   = "ubuntu-aws"
+    name   = data.spectrocloud_pack.ubuntu.name
     tag    = data.spectrocloud_pack.ubuntu.version
     uid    = data.spectrocloud_pack.ubuntu.id
     values = data.spectrocloud_pack.ubuntu.values
   }
 
 pack {
-    name   = "kubernetes"
+    name   = data.spectrocloud_pack.k8s.name
     tag    = data.spectrocloud_pack.k8s.version
     uid    = data.spectrocloud_pack.k8s.id
     values = data.spectrocloud_pack.k8s.values
   }
 
 pack {
-    name   = "cni-calico"
+    name   = data.spectrocloud_pack.cni.name
     tag    = data.spectrocloud_pack.cni.version
     uid    = data.spectrocloud_pack.cni.id
     values = data.spectrocloud_pack.cni.values
   }
 
 pack {
-    name   = "csi-aws"
+    name   = data.spectrocloud_pack.csi.name
     tag    = data.spectrocloud_pack.csi.version
     uid    = data.spectrocloud_pack.csi.id
     values = data.spectrocloud_pack.csi.values
   }
 
 #pack {
-    #name   = "open-policy-agent"
+    #name   = data.spectrocloud_pack.opa.name
     #tag    = data.spectrocloud_pack.opa.version
     #uid    = data.spectrocloud_pack.opa.id
     #values = data.spectrocloud_pack.opa.values
   #}
   
 pack {
-    name   = "k8sdash"
+    name   = data.spectrocloud_pack.k8sdash.name
     tag    = data.spectrocloud_pack.k8sdash.version
     uid    = data.spectrocloud_pack.k8sdash.id
     values = data.spectrocloud_pack.k8sdash.values
