@@ -49,8 +49,8 @@ aws_key_pair = "yourPublicKeyBob"
 aws_region    = "us-east-1"
 
 # The master and worker instance types can be set independently  
-master_instance_type = "t3a.large"
-worker_instance_type = "t3a.large"
+master_instance_type = "t3a.xlarge"
+worker_instance_type = "t3a.xlarge"
 
 # The master and worker node counts can be set independently 
 master-pool_node_count = 1
