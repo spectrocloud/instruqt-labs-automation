@@ -82,7 +82,7 @@ pack {
   }  
 
 pack {
-    name   = "argo-cd"
+    name   = data.spectrocloud_pack.argo.name
     tag    = data.spectrocloud_pack.argo.version
     uid    = data.spectrocloud_pack.argo.id
     values = data.spectrocloud_pack.argo.values
