@@ -58,8 +58,7 @@ worker-pool_node_count = 2
 
 # The master and worker node region az's can be set independently.  Palette will round-robin if multiple az's are declared 
 master_aws_region_az = [
-    "us-east-1a",
-    "us-east-1b",
+    "us-east-1a"
     ]
 worker_aws_region_az = [
     "us-east-1a",
