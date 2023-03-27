@@ -15,12 +15,6 @@ data "spectrocloud_pack" "k8sdash" {
   version  = "2.7.0"
 }
 
-#data "spectrocloud_pack" "opa" {
-  #name = "open-policy-agent"
-  #registry_uid = data.spectrocloud_registry.registry.id
-  #version  = "3.7.0"
-#}
-
 data "spectrocloud_pack" "csi" {
   name = "csi-aws-ebs"
   registry_uid = data.spectrocloud_registry.registry.id
