@@ -17,7 +17,7 @@ resource "spectrocloud_cluster_aws" "cluster" {
 
   machine_pool {
     control_plane           = true
-    control_plane_as_worker = false
+    control_plane_as_worker = true
     name                    = "master-pool"
     count                   = var.master-pool_node_count
     instance_type           = var.master_instance_type
