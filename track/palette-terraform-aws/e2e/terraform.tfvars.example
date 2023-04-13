@@ -54,7 +54,7 @@ worker_instance_type = "t3a.xlarge"
 
 # The master and worker node counts can be set independently 
 master-pool_node_count = 3
-worker-pool_node_count = 2
+worker-pool_node_count = 1
 
 # The master and worker node region az's can be set independently.  Palette will round-robin if multiple az's are declared 
 master_aws_region_az = [
