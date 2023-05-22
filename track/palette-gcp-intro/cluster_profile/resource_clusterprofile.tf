@@ -1,3 +1,8 @@
+data "spectrocloud_pack" "proxy" {
+  name = "spectro_proxy"
+  version  = "1.3.0"
+}
+
 data "spectrocloud_pack" "csi" {
   name = "csi-gcp-driver"
   version  = "1.8.2"
@@ -32,12 +37,13 @@ pack {
     uid    = data.spectrocloud_pack.ubuntu.id
     values = data.spectrocloud_pack.ubuntu.values
   }
-pack {
+ pack {
     name   = data.spectrocloud_pack.k8s.name
     tag    = data.spectrocloud_pack.k8s.version
     uid    = data.spectrocloud_pack.k8s.id
     values = file("${path.cwd}/values_yaml/spectro_proxy.yaml")
   }  
+  
 pack {
     name   = data.spectrocloud_pack.cni.name
     tag    = data.spectrocloud_pack.cni.version
