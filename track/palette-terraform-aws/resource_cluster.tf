@@ -9,7 +9,7 @@ resource "spectrocloud_cluster_eks" "cluster" {
   tags = ["cloud:eks","env:prod"]
 
   cluster_profile {
-    id = spectrocloud_cluster_profile.infra_k8s-1-1-29.id
+    id = spectrocloud_cluster_profile.infra_k8s-1-1-28.id
   }
 
   cluster_profile {
