@@ -1,0 +1,13 @@
+version: "3"
+containers:
+- name: vertex-client
+  image: wcrum/auto-vertex
+  shell: /bin/sh
+  ports:
+  - 80
+secrets:
+  - name: VERTEX_API_KEY
+#aws_accounts:
+#- name: spectro-cloud-lab
+#  managed_policies:
+#  - arn:aws:iam::aws:policy/AdministratorAccess

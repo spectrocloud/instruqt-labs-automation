@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export PALETTE_HOST=console.vertex.spectrocloud.com
+export INSTRUQT_THEME=vertex
+
+cd /app
+exec /app/main setup ${VERTEX_API_KEY}
+
+exit 0

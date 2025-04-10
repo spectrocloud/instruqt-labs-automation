@@ -1,0 +1,87 @@
+#!/bin/bash
+# Install prerequisites. You can speed up your boot time by baking these into 
+# a container or virtual machine image.
+#apt -y update
+
+DEBIAN_FRONTEND=noninteractive apt -y install curl gnupg lsb-release git software-properties-common
+
+# Install vim
+apt install vim -y
+
+# Download and install AWS CLI
+apt install unzip -y
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
+
+# Download and install Terraform
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg 
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
+apt update && apt install terraform
+
+# Clone the Spectro Cloud example repository
+#git clone https://github.com/vincentramirez/spectro_aws_iaas_example.git
+#/bin/set-workdir "/root/spectro_aws_iaas_example"
+
+# Download and install kubectl 
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+# Download and install Helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+# base AWS configuration
+aws configure set region us-east-1 --profile default
+aws ec2 create-default-vpc || true
+
+# Generate a .screenrc file
+# We use a Bash HEREDOC to create the ~/.screenrc file.
+apt install screen -y
+cat > ~/.screenrc <<-EOF 
+# ~/.screenrc configuration file
+# Set the default shell
+shell "/bin/bash"
+# These lines give us a pretty navigation bar at the bottom
+hardstatus off
+hardstatus alwayslastline
+hardstatus string '%{= kW}[ %{m}%H %{W}][%= %{= kw}%?%-Lw%?%{r}(%{g}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{W}][%{Y} %d/%m %{Y}%c %{W}]'
+# Disable the startup message
+startup_message off
+# Disable Visual Bell
+vbell off
+# Increase the scrollback buffer
+defscrollback 5000
+# Use SHIFT-right and SHIFT-left arrow to change windows
+bindkey ^[[1;2D prev
+bindkey ^[[1;2C next
+# Add your own programs here to auto-start them in a window.
+#screen -t webserver 0 python3 -m http.server
+#screen -t htop 1 htop
+screen -t shell 2
+EOF
+# Append this onto the end of ~/.bashrc
+# The \ ensures the target file has a literal $STY and not an empty string.
+cat >> ~/.bashrc <<-EOF
+if [[ -z "\$STY" ]]; then
+   screen -xRR default
+fi
+EOF
+
+# You may delete these lines, or use this technique
+# to create your own config files.
+#cat > /root/index.html << EOF
+#<html>
+#  <head><title>Meow!</title></head>
+#  <body>
+#  <div style="width:800px;margin: 0 auto">
+#  <!-- BEGIN -->
+#  <center><img src="http://placekitten.com/640/480"></img></center>
+#  <center><h2>Meow World!</h2></center>
+#  <!-- END -->
+#  </div>
+#  </body>
+#</html>
+#EOF
+exit 0

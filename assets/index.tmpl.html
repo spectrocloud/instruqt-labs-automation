@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Instruqt VerteX Account</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: rgb(238, 246, 255) url("./background.png") 0% 0% / cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #ffffff; /* White card background */
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: rgba(75, 85, 127, 0.12) 0px 50.0806px 100.944px, rgba(75, 85, 127, 0.09) 0px 23.1538px 46.6693px, rgba(75, 85, 127, 0.075) 0px 13.2481px 26.7031px, rgba(75, 85, 127, 0.065) 0px 8.04147px 16.2086px, rgba(75, 85, 127, 0.055) 0px 4.84534px 9.76639px, rgba(75, 85, 127, 0.045) 0px 2.6982px 5.43856px, rgba(75, 85, 127, 0.03) 0px 1.16048px 2.33909px;
+            width: 500px; /* Adjust width as needed */
+            border: 1px solid #e0e0e0; /* Light border */
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee; /* Separator line */
+        }
+        .logo {
+            /* Placeholder for logo - you can replace span with an <img> tag */
+            font-weight: bold;
+            font-size: 24px;
+            color: #FF9900; /* AWS Orange */
+            margin-right: 15px;
+            /* Add styles for your actual logo image if using one */
+        }
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .header-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+        .header-subtitle {
+            font-size: 14px;
+            color: #777;
+        }
+        .credential-row {
+            margin-bottom: 12px;
+        }
+        .credential-label {
+            display: block; /* Label on its own line */
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+        .credential-value {
+            font-family: 'Courier New', Courier, monospace; /* Monospace font */
+            font-size: 12px;
+            color: #333;
+            background-color: #f9f9f9; /* Slightly different background for value */
+            padding: 5px 8px;
+            border-radius: 4px;
+            display: inline-block; /* Keep copy icon next to it */
+            word-break: break-all; /* Prevent long strings from overflowing */
+        }
+        .copy-icon {
+            display: inline-block;
+            margin-left: 8px;
+            cursor: pointer;
+            color: #777;
+            font-size: 16px; /* Adjust icon size */
+        }
+        .copy-icon:hover {
+            color: #000;
+        }
+        .fa-clipboard {
+        }
+
+        .login-button {
+            background: rgb(31, 122, 120);
+            height: 56px;
+            font-size: 18px;
+            color: white;
+            border: 0px;
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px -2px 0px inset;
+            font-family: Poppins, Arial, Helvetica, sans-serif;
+            width: 100%;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .login-button:hover {
+            background: rgb(23, 88, 87);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header">
+            <span class="logo">
+                {{ if eq .Theme "vertex" }}
+                <img src="vertex.svg">
+                {{ else }}
+                <img src="palette.svg">
+                {{ end }}
+            </span>
+            <div class="header-text">
+                <span class="header-title">Workshop</span>
+                <span class="header-subtitle">{{ if eq .Theme "vertex"}} VerteX {{ else }} Palette {{ end }} Account</span>
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <div class="credential-row">
+                <span class="credential-label">Email:</span>
+                <span class="credential-value">{{ .EmailID }}</span>
+                <span class="copy-icon" title="Copy"><i class="fa fa-clipboard"></i></span> </div>
+
+            <div class="credential-row">
+                <span class="credential-label">Password:</span>
+                <span class="credential-value">{{ .Password }}</span>
+                <span class="copy-icon" title="Copy"><i class="fa fa-clipboard"></i></span>
+            </div>
+
+            <div class="credential-row">
+                <span class="credential-label">API Key:</span>
+                <span class="credential-value">{{ .APIKey }}</span>
+                <span class="copy-icon" title="Copy"><i class="fa fa-clipboard"></i></span>
+            </div>
+            <div class="credential-row">
+                <span class="credential-label">Project: <b>{{ .ProjectName }}</b></span>
+                <span class="credential-value">{{ .ProjectID }}</span>
+                <span class="copy-icon" title="Copy"><i class="fa fa-clipboard"></i></span>
+            </div>
+            <div class="credential-row">
+                <a target="_blank" href="https://{{ .PaletteHost }}">
+                    <button class="login-button" type="submit"> <span> Login to {{ if eq .Theme "vertex"}} VerteX {{ else }} Palette {{ end }} </span> </button>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.copy-icon').forEach(icon => {
+            icon.addEventListener('click', () => {
+                const valueSpan = icon.previousElementSibling;
+                const valueToCopy = valueSpan.textContent || valueSpan.innerText;
+                navigator.clipboard.writeText(valueToCopy).then(() => {
+                    icon.style.color = "rgb(31, 122, 120)";
+                }).catch(err => {
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /app
+exec /app/main cleanup
+
+exit 0

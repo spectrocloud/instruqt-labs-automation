@@ -1,0 +1,30 @@
+slug: vertex-sandbox
+id: j1ldvflye8ku
+title: VerteX Sandbox
+teaser: Auto Create a Palette VerteX Account
+description: |-
+  Temporary Palette VerteX account for Demos and Testing
+
+  **This track provides you**
+    - Your own temporary VerteX account
+icon: https://avatars.githubusercontent.com/u/36211249
+tags:
+- vertex
+owner: spectrocloud-se-int
+developers:
+- will.crum@spectrocloud.com
+show_timer: true
+skipping_enabled: true
+idle_timeout: 5400
+timelimit: 28800
+lab_config:
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  feedback_tab_enabled: false
+  loadingMessages: true
+  override_challenge_layout: false
+  hideStopButton: false
+  default_layout: AssignmentRight
+  default_layout_sidebar_size: 33
+checksum: "2789478578043187041"
+enhanced_loading: false
