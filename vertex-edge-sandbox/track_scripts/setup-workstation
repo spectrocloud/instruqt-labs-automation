@@ -1,0 +1,40 @@
+#!/bin/bash
+
+sudo apt-get update && sudo apt-get install -y bash jq zstd rsync systemd-timesyncd conntrack iptables rsyslog --no-install-recommends
+
+curl -L https://github.com/spectrocloud/agent-mode/releases/download/v4.6.16/agent-mode-fips-linux-amd64.tar --output agent-mode-linux-amd64.tar
+
+sudo tar -xvf agent-mode-linux-amd64.tar -C /
+
+cat << EOF > user-data
+#cloud-config
+install:
+  reboot: true
+  poweroff: false
+
+stylus:
+  vip:
+    skip: true
+  installationMode: airgap
+  enableMultiNode: true
+  featureGate: UserDataForm
+  localUI:
+    port: 8443
+stages:
+  initramfs:
+    - users:
+        kairos:
+          groups:
+            - sudo
+          passwd: kairos
+EOF
+
+export USERDATA=/root/user-data
+
+cp /root/user-data /var/lib/spectro/userdata
+
+curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install-fips.sh
+
+chmod +x ./palette-agent-install-fips.sh
+
+sudo --preserve-env ./palette-agent-install-fips.sh

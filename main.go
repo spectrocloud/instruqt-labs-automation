@@ -20,7 +20,7 @@ func main() {
 	case "setup":
 		Setup(args[2])
 	case "cleanup":
-		Cleanup()
+		Cleanup(args[2])
 	case "webserver":
 		Webserver()
 	default:

@@ -6,13 +6,7 @@ title: "\U0001F9BA This is your sandbox, a safe place"
 teaser: You can't break anything
 notes:
 - type: text
-  contents: |-
-    In this sandbox you can use AWS with AdministratorAccess.
-
-    The only catch is your subscription will be destroyed in 8hrs.
-    You will be warned after 90mins of inactivity, so keep an eye out for that.
-
-    So be sure to save any work outside of the sandbox, like to a version control system.
+  contents: In this sandbox you get your own VerteX account!
 tabs:
 - id: ajsgopsb4zth
   title: VerteX
@@ -24,6 +18,15 @@ tabs:
   title: Shell
   type: terminal
   hostname: vertex-client
+- id: wrpftybv2iqs
+  title: Terminal
+  type: terminal
+  hostname: workstation
+- id: xytchcswdgom
+  title: LocalUI
+  type: service
+  hostname: workstation
+  port: 8443
 difficulty: basic
 enhanced_loading: null
 ---

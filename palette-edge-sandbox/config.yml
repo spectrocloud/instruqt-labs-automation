@@ -1,0 +1,19 @@
+version: "3"
+containers:
+- name: palette-client
+  image: wcrum/auto-vertex
+  shell: /bin/sh
+  ports:
+  - 80
+virtualmachines:
+- name: workstation
+  image: spectro-common-dev/spectro-instruqt
+  shell: /bin/bash
+  machine_type: n1-standard-4
+  allow_external_ingress:
+  - http
+  - https
+  - high-ports
+  nested_virtualization: true
+secrets:
+- name: STARBUCKS_PALETTE_API_KEY

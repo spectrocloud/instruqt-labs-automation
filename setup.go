@@ -16,13 +16,14 @@ import (
 )
 
 type PageData struct {
-	EmailID     string
-	Password    string
-	APIKey      string
-	ProjectName string
-	ProjectID   string
-	PaletteHost string
-	Theme       string
+	EmailID           string
+	Password          string
+	APIKey            string
+	ProjectName       string
+	ProjectID         string
+	PaletteHost       string
+	Theme             string
+	RegistrationToken string
 }
 
 func Setup(SuerApiKey string) {
@@ -137,7 +138,6 @@ func Setup(SuerApiKey string) {
 	params := version1.NewV1APIKeysCreateParams().WithBody(body)
 	resp, err := pc.Client.V1APIKeysCreate(params)
 	if err != nil {
-		fmt.Println("here")
 		panic(err)
 	}
 
@@ -152,11 +152,32 @@ func Setup(SuerApiKey string) {
 		panic(err)
 	}
 
+	edgeEntity := &models.V1EdgeTokenEntity{
+		Metadata: &models.V1ObjectMeta{
+			Name: fmt.Sprintf("instruqt-%s", SANDBOX_ID),
+		},
+		Spec: &models.V1EdgeTokenSpecEntity{
+			DefaultProjectUID: projectId,
+			Expiry:            models.V1Time(time.Now().Add(time.Duration(7 * 24 * time.Hour))),
+		},
+	}
+	edgeTokenParams := version1.NewV1EdgeTokensCreateParams().WithBody(edgeEntity)
+	registrationTokenUid, err := pc.Client.V1EdgeTokensCreate(edgeTokenParams)
+	if err != nil {
+		panic(err)
+	}
+
+	edgeTokenGet, err := pc.Client.V1EdgeTokensUIDGet(version1.NewV1EdgeTokensUIDGetParams().WithUID(*registrationTokenUid.Payload.UID))
+	if err != nil {
+		panic(err)
+	}
+
 	os.Setenv("PALETTE_INSTRUQT_EMAILID", user.Spec.EmailID)
 	os.Setenv("PALETTE_INSTRUQT_PASSWORD", goodPassword)
 	os.Setenv("PALETTE_INSTRUQT_API_KEY", resp.Payload.APIKey)
 	os.Setenv("PALETTE_INSTRUQT_PROJECTNAME", projectEntity.Metadata.Name)
 	os.Setenv("PALETTE_INSTRUQT_PROJECTID", projectId)
+	os.Setenv("PALETTE_INSTRUQT_EDGETOKEN", edgeTokenGet.Payload.Spec.Token)
 
 	data := PageData{}
 	data.EmailID = os.Getenv("PALETTE_INSTRUQT_EMAILID")
@@ -166,6 +187,7 @@ func Setup(SuerApiKey string) {
 	data.ProjectID = os.Getenv("PALETTE_INSTRUQT_PROJECTID")
 	data.Theme = os.Getenv("INSTRUQT_THEME")
 	data.PaletteHost = os.Getenv("PALETTE_HOST")
+	data.RegistrationToken = os.Getenv("PALETTE_INSTRUQT_EDGETOKEN")
 
 	file, err := os.Create("index.html")
 	if err != nil {

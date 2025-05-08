@@ -1,0 +1,31 @@
+slug: palette-edge-sandbox
+id: glyjyxucmihd
+title: palette-edge-sandbox
+teaser: Auto Create a Palette Account
+description: |-
+  Temporary Palette account for Demos and Testing
+
+  **This track provides you**
+    - Your own temporary VerteX account
+icon: https://avatars.githubusercontent.com/u/36211249
+tags:
+- palette
+- edge
+owner: spectrocloud-se-int
+developers:
+- will.crum@spectrocloud.com
+show_timer: true
+skipping_enabled: true
+idle_timeout: 5400
+timelimit: 28800
+lab_config:
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  feedback_tab_enabled: false
+  loadingMessages: true
+  override_challenge_layout: false
+  hideStopButton: false
+  default_layout: AssignmentRight
+  default_layout_sidebar_size: 33
+checksum: "17849122714200855899"
+enhanced_loading: false

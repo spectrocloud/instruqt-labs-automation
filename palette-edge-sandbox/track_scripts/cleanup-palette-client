@@ -1,0 +1,8 @@
+#!/bin/sh
+export PALETTE_HOST=starbucks.training.spectrocloud.com
+export INSTRUQT_THEME=palette
+
+cd /app
+exec /app/main cleanup ${STARBUCKS_PALETTE_API_KEY}
+
+exit 0
