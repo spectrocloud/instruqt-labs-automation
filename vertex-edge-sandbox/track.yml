@@ -3,10 +3,11 @@ id: j1ldvflye8ku
 title: VerteX Sandbox
 teaser: Auto Create a Palette VerteX Account
 description: |-
-  Temporary Palette VerteX account for Demos and Testing
+  Temporary Palette VerteX account for Labs
 
   **This track provides you**
     - Your own temporary VerteX account
+    - An Edge Device
 icon: https://avatars.githubusercontent.com/u/36211249
 tags:
 - vertex
@@ -26,5 +27,5 @@ lab_config:
   hideStopButton: false
   default_layout: AssignmentRight
   default_layout_sidebar_size: 33
-checksum: "14115635352570800385"
+checksum: "8995136324720121404"
 enhanced_loading: false

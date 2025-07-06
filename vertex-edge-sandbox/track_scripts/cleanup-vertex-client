@@ -3,6 +3,6 @@ export PALETTE_HOST=console.vertex.spectrocloud.com
 export INSTRUQT_THEME=vertex
 
 cd /app
-exec /app/main cleanup
+exec /app/main cleanup ${VERTEX_API_KEY}
 
 exit 0

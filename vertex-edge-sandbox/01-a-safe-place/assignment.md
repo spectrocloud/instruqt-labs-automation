@@ -14,10 +14,6 @@ tabs:
   hostname: vertex-client
   path: /
   port: 80
-- id: imodedbnyuvw
-  title: Shell
-  type: terminal
-  hostname: vertex-client
 - id: wrpftybv2iqs
   title: Terminal
   type: terminal
