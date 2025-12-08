@@ -1,0 +1,8 @@
+#!/bin/sh
+export PALETTE_HOST=training.training.spectrocloud.com
+export INSTRUQT_THEME=palette
+
+cd /app
+exec /app/main setup ${TRAINING_PALETTE_API_KEY}
+
+exit 0

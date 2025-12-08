@@ -1,0 +1,24 @@
+slug: palette-azure-sandbox-wcrum
+id: rgzzmodelh1w
+title: palette-azure-sandbox-wcrum
+description: This lab provides temporary Azure subscription access for testing and
+  additionally a Palette account
+icon: ./assets/azurelogo.png
+tags: []
+owner: spectrocloud-se-int
+developers:
+- will.crum@spectrocloud.com
+show_timer: true
+skipping_enabled: true
+idle_timeout: 5400
+timelimit: 28800
+lab_config:
+  sidebar_enabled: true
+  feedback_recap_enabled: true
+  feedback_tab_enabled: false
+  loadingMessages: true
+  hideStopButton: false
+  default_layout: AssignmentRight
+  default_layout_sidebar_size: 33
+checksum: "4593034781107712989"
+enhanced_loading: false

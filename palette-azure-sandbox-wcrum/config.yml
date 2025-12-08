@@ -1,0 +1,18 @@
+version: "3"
+containers:
+- name: palette-client
+  image: wcrum/auto-vertex
+  shell: /bin/sh
+  ports:
+  - 80
+- name: cloud-client
+  image: gcr.io/instruqt/cloud-client
+  shell: /bin/bash
+  ports:
+  - 80
+azure_subscriptions:
+- name: azuresubscription
+  roles:
+  - Owner
+secrets:
+- name: TRAINING_PALETTE_API_KEY
