@@ -11,6 +11,8 @@
 
 # no creds
 *.pem
+.claude/
+.claude-cache/
 
 # terraformrc file
 terraform.rc
